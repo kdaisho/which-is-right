@@ -3,3 +3,9 @@ type handleChangeProps = {
     value: string
   }
 }
+
+type FormProps = {
+  id: number
+  searchTerm: string
+  handleChange: ({ target }: handleChangeProps) => void
+}

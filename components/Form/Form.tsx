@@ -1,11 +1,5 @@
 import React, { FunctionComponent } from 'react'
 
-type FormProps = {
-  id: number
-  searchTerm: string
-  handleChange: ({ target }: handleChangeProps) => void
-}
-
 const Form: FunctionComponent<FormProps> = ({
   id,
   handleChange,
