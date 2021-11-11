@@ -1,18 +1,16 @@
-import React, { useState } from 'react'
+import React, { FunctionComponent } from 'react'
 
-type handleChangeProps = {
-  target: {
-    value: string
-  }
+type FormProps = {
+  id: number
+  searchTerm: string
+  handleChange: ({ target }: handleChangeProps) => void
 }
 
-const Form = ({ id }) => {
-  const [searchTerm, setSearchTerm] = useState('')
-
-  const handleChange = ({ target }: handleChangeProps) => {
-    setSearchTerm(target.value)
-  }
-
+const Form: FunctionComponent<FormProps> = ({
+  id,
+  handleChange,
+  searchTerm,
+}: FormProps) => {
   return (
     <div>
       <label>

@@ -5,10 +5,19 @@ import Head from 'next/head'
 export default function Home() {
   const initial = { id: 0 }
   const [forms, setForms] = useState([initial])
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const handleChange = ({ target }: handleChangeProps) => {
+    setSearchTerm(target.value)
+  }
 
   const handleAddForm = () => {
     const prevId = forms[forms.length - 1].id
     setForms([...forms, { id: prevId + 1 }])
+  }
+
+  const handleSubmit = () => {
+    console.log('Submit:', searchTerm)
   }
 
   return (
@@ -25,10 +34,15 @@ export default function Home() {
           {forms.length &&
             forms.map(form => (
               <div key={form.id}>
-                <Form id={form.id} />{' '}
+                <Form
+                  id={form.id}
+                  handleChange={handleChange}
+                  searchTerm={searchTerm}
+                />{' '}
               </div>
             ))}
           <button onClick={handleAddForm}>Add</button>
+          <button onClick={handleSubmit}>Submit</button>
         </main>
 
         <footer className='bg-blue-500 h-16 w-full flex justify-center'>
